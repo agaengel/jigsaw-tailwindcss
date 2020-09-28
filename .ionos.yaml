@@ -11,7 +11,7 @@ setup:
     node-version: v10.16.3
 prepare:
   name: Prepare Project build environment
-  commmand: |
+  command: |
     composer install
     npm ci
 build:
