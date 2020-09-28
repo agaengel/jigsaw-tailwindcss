@@ -1,0 +1,19 @@
+---
+distFolder: build_production
+setup:
+- name: Setup composer
+  action: docker://composer:1.9.1
+  properties:
+    args: install
+- name: Setup Node.js
+  action: actions/setup-node@v1
+  properties:
+    node-version: v10.16.3
+prepare:
+  name: Prepare Project build environment
+  commmand: |
+    composer install
+    npm ci
+build:
+  name: Build Jigsaw Tailwind
+  command: npm run production  
