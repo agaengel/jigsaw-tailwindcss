@@ -2,18 +2,14 @@
 distFolder: build_production
 setup:
 - name: Setup composer
-  action: docker://composer:1.9.1
-  properties:
-    args: install
+  action: php-actions/composer@v2
 - name: Setup Node.js
   action: actions/setup-node@v1
   properties:
     node-version: v10.16.3
 prepare:
   name: Prepare Project build environment
-  command: |
-    composer install
-    npm ci
+  command: npm ci
 build:
   name: Build Jigsaw Tailwind
   command: npm run production  
